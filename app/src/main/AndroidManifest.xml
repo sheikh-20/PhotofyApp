@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Photofy"
+        tools:targetApi="31">
+
+        <activity android:name=".ui.home.edit_photo.EditPhotoActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Photofy" />
+
+        <activity android:name=".ui.home.bg_changer.BgChangerActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Photofy" />
+
+        <activity android:name=".ui.home.bg_remover.BgRemoverActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Photofy" />
+
+        <activity android:name=".ui.home.hairstyle_changer.HairstyleChangerActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Photofy" />
+
+        <activity android:name=".ui.home.change_facial.ChangeFacialActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Photofy" />
+
+        <activity android:name=".ui.home.magic_eraser.MagicEraserActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Photofy" />
+
+
+        <activity android:name=".ui.home.photo_enhancer.PhotoEnhancerActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Photofy" />
+
+
+        <activity android:name=".ui.home.room_design.RoomDesignActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Photofy" />
+
+        <activity android:name=".ui.home.transform.TransformActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Photofy" />
+
+        <activity android:name=".ui.home.cartoon_generator.CartoonActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Photofy" />
+
+
+        <activity android:name=".ui.home.anime_generator.AnimeGeneratorActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Photofy" />
+
+        <activity android:name=".ui.home.scene_generator.SceneGeneratorActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Photofy" />
+        
+        <activity android:name=".ui.home.avatar_generator.AvatarGeneratorActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Photofy" />
+
+        <activity android:name=".ui.home.HomeActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Photofy">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.onboarding.OnboardingActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Photofy">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
