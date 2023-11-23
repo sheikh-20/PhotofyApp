@@ -18,6 +18,7 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+        compileSdkPreview = "UpsideDownCake"
     }
 
     buildTypes {
@@ -50,6 +51,7 @@ android {
 }
 
 dependencies {
+    val lifecycle_version = "2.6.1"
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
@@ -74,4 +76,13 @@ dependencies {
 
     // Material icon extended
     implementation("androidx.compose.material:material-icons-extended:1.6.0-alpha02")
+
+    // Splash screen
+    implementation("androidx.core:core-splashscreen:1.1.0-alpha01")
+
+    // ViewModel with ktx
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+
+    // Compose viewmodel utility
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
 }
