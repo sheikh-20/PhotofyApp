@@ -9,10 +9,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.application.photofy.base.BaseActivity
 import com.application.photofy.ui.theme.PhotofyTheme
 import com.application.photofy.ui.viewmodel.OnboardingViewModel
 
-class OnboardingActivity : ComponentActivity() {
+class OnboardingActivity : BaseActivity() {
 
     private val viewModel: OnboardingViewModel by viewModels()
 
@@ -23,6 +24,7 @@ class OnboardingActivity : ComponentActivity() {
                 viewModel.isLoading.value
             }
         }
+        setTransparentStatusBar()
         setContent {
             PhotofyTheme {
                 // A surface container using the 'background' color from the theme

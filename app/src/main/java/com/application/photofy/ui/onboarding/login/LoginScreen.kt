@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
@@ -27,21 +28,23 @@ import com.application.photofy.ui.onboarding.component.LoginComponent
 import com.application.photofy.ui.theme.PhotofyTheme
 
 @Composable
-fun LoginScreen(modifier: Modifier = Modifier) {
+fun LoginScreen(modifier: Modifier = Modifier,
+                onSignInClick: () -> Unit = {  },
+                onSignUpClick: () -> Unit = { }) {
     Column(modifier = modifier
         .fillMaxSize()
         .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween) {
 
-        Icon(painter = painterResource(id = R.drawable.ic_movie),
+        Icon(painter = painterResource(id = R.drawable.ic_photofy),
             contentDescription = null,
             modifier = modifier.size(200.dp))
 
        Column(verticalArrangement = Arrangement.spacedBy(16.dp),
            horizontalAlignment = Alignment.CenterHorizontally) {
            Text(text = stringResource(id = R.string.app_name),
-               style = MaterialTheme.typography.headlineLarge,
+               style = MaterialTheme.typography.displayMedium,
                fontWeight = FontWeight.SemiBold,
                textAlign = TextAlign.Center)
 
@@ -50,7 +53,7 @@ fun LoginScreen(modifier: Modifier = Modifier) {
                textAlign = TextAlign.Center)
        }
 
-        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
             LoginComponent(icon = R.drawable.ic_google, text = R.string.continue_with_google) {
 
             }
@@ -62,13 +65,13 @@ fun LoginScreen(modifier: Modifier = Modifier) {
             }
         }
 
-        Button(onClick = { }, modifier = modifier.fillMaxWidth()) {
+        Button(onClick = onSignInClick, modifier = modifier.fillMaxWidth().requiredHeight(50.dp)) {
             Text(text = "Sign In With Password")
         }
 
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text(text = stringResource(R.string.don_t_have_an_account))
-            TextButton(onClick = {  }) {
+            TextButton(onClick = onSignUpClick) {
                 Text(text = stringResource(R.string.sign_up),
                     color = MaterialTheme.colorScheme.primary,
                     fontWeight = FontWeight.Bold)

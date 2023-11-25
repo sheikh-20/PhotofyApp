@@ -2,7 +2,6 @@
 <resources>
     <style name="Theme.Photofy.Splash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@android:color/black</item>
-
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_photofy</item>
         <item name="postSplashScreenTheme">@style/Theme.Photofy</item>
     </style>

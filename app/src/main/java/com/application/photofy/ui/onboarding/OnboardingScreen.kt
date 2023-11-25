@@ -49,7 +49,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun OnboardingScreen(modifier: Modifier = Modifier) {
+fun OnboardingScreen(modifier: Modifier = Modifier, onClick: () -> Unit = { }) {
 
     val coroutineScope = rememberCoroutineScope()
     val pager = rememberPagerState()
@@ -79,13 +79,12 @@ fun OnboardingScreen(modifier: Modifier = Modifier) {
                 horizontalArrangement = Arrangement.spacedBy(16.dp)) {
 
                 if ((pager.currentPage != pager.pageCount.dec())) {
-                    OutlinedButton(onClick = {}, modifier = modifier
+                    OutlinedButton(onClick = onClick, modifier = modifier
                         .weight(1f)
                         .requiredHeight(50.dp)) {
                         Text(text = "Skip")
                     }
                 }
-
 
                 Button(
                     onClick = {
@@ -93,14 +92,19 @@ fun OnboardingScreen(modifier: Modifier = Modifier) {
                             if (pager.currentPage < pager.pageCount - 1) {
                                 pager.scrollToPage(pager.currentPage + 1)
                             } else {
-
+                                onClick()
                             }
                         }
                     },
                     modifier = modifier
                         .weight(1f)
                         .requiredHeight(50.dp)) {
-                    Text(text = "Next")
+
+                    if (pager.currentPage == pager.pageCount - 1) {
+                        Text(text = "Get started")
+                    } else {
+                        Text(text = "Next")
+                    }
                 }
             }
         }
@@ -141,21 +145,23 @@ data class HorizontalData(val title: String, val description: String)
 private fun HorizontalContent(modifier: Modifier = Modifier, horizontalData: HorizontalData) {
     Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(16.dp)) {
 
-        Image(painter = painterResource(id = R.drawable.doctor_strange), contentDescription = null,
-            modifier = modifier
-                .fillMaxHeight()
-                .drawWithCache {
-                    val gradient = Brush.verticalGradient(
-                        colors = listOf(Color.Transparent, Color.Black),
-                        startY = size.height / 3,
-                        endY = size.height
-                    )
-                    onDrawWithContent {
-                        drawContent()
-                        drawRect(gradient, blendMode = BlendMode.Multiply)
-                    }
-                },
-            contentScale = ContentScale.FillBounds)
+//        Image(painter = painterResource(id = R.drawable.doctor_strange), contentDescription = null,
+//            modifier = modifier
+//                .fillMaxHeight()
+//                .drawWithCache {
+//                    val gradient = Brush.verticalGradient(
+//                        colors = listOf(Color.Transparent, Color.Black),
+//                        startY = size.height / 3,
+//                        endY = size.height
+//                    )
+//                    onDrawWithContent {
+//                        drawContent()
+//                        drawRect(gradient, blendMode = BlendMode.Multiply)
+//                    }
+//                },
+//            contentScale = ContentScale.FillBounds)
+
+        Spacer(modifier = modifier.weight(1f))
 
         Text(text = horizontalData.title,
             style = MaterialTheme.typography.headlineLarge,

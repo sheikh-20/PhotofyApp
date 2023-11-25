@@ -33,6 +33,7 @@ import androidx.compose.ui.focus.FocusManager
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -41,7 +42,7 @@ import androidx.compose.ui.unit.dp
 fun LoginComponent(modifier: Modifier = Modifier, @DrawableRes icon: Int, @StringRes text: Int, onClick: () -> Unit) {
 
     OutlinedButton(onClick = onClick,
-        shape = RoundedCornerShape(30),
+        shape = RoundedCornerShape(50),
         border = BorderStroke(width = .5.dp, color =  Color.LightGray),
     ) {
 
@@ -59,7 +60,8 @@ fun LoginComponent(modifier: Modifier = Modifier, @DrawableRes icon: Int, @Strin
             Spacer(modifier = modifier.padding(horizontal = 8.dp))
 
             Text(text = stringResource(id = text),
-                style = MaterialTheme.typography.bodyMedium,)
+                style = MaterialTheme.typography.bodyLarge,
+                fontWeight = FontWeight.SemiBold)
         }
     }
 }
