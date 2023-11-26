@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -39,7 +40,7 @@ import com.application.photofy.ui.onboarding.component.SocialLoginComponent
 import com.application.photofy.ui.theme.PhotofyTheme
 
 @Composable
-fun PasswordResetScreen(modifier: Modifier = Modifier) {
+fun PasswordResetScreen(modifier: Modifier = Modifier, onContinueClick: () -> Unit = { }) {
     val focusManager = LocalFocusManager.current
 
     var email by remember { mutableStateOf("") }
@@ -91,7 +92,7 @@ fun PasswordResetScreen(modifier: Modifier = Modifier) {
 
             Divider(modifier = modifier.fillMaxWidth())
 
-            Button(onClick = {   },
+            Button(onClick = onContinueClick,
                 modifier = modifier
                     .shadow(
                         elevation = 4.dp,
@@ -99,14 +100,13 @@ fun PasswordResetScreen(modifier: Modifier = Modifier) {
                         spotColor = MaterialTheme.colorScheme.outlineVariant,
                         shape = RoundedCornerShape(50)
                     )
-                    .fillMaxWidth(),
+                    .fillMaxWidth().requiredHeight(50.dp),
                 colors = ButtonDefaults.filledTonalButtonColors(containerColor = Color.Red)) {
 
                 Text(text = stringResource(R.string.continues), color = colorResource(id = R.color.white), modifier = modifier.padding(4.dp))
 
             }
         }
-
     }
 }
 

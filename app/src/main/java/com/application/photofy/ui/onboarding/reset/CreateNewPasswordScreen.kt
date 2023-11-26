@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -34,7 +35,7 @@ import com.application.photofy.ui.onboarding.component.PasswordComponent
 import com.application.photofy.ui.theme.PhotofyTheme
 
 @Composable
-fun CreateNewPasswordScreen(modifier: Modifier = Modifier) {
+fun CreateNewPasswordScreen(modifier: Modifier = Modifier, onContinueClick: () -> Unit = { }) {
     val focusManager = LocalFocusManager.current
 
     var email by remember { mutableStateOf("") }
@@ -111,7 +112,7 @@ fun CreateNewPasswordScreen(modifier: Modifier = Modifier) {
                         spotColor = MaterialTheme.colorScheme.outlineVariant,
                         shape = RoundedCornerShape(50)
                     )
-                    .fillMaxWidth(),
+                    .fillMaxWidth().requiredHeight(50.dp),
                 colors = ButtonDefaults.filledTonalButtonColors(containerColor = Color.Red)) {
 
                 Text(text = stringResource(R.string.continues), color = colorResource(id = R.color.white), modifier = modifier.padding(4.dp))

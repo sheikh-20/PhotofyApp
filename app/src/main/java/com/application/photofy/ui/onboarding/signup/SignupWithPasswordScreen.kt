@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -40,7 +41,7 @@ import com.application.photofy.ui.theme.PhotofyTheme
 
 
 @Composable
-fun SignupWithPasswordScreen(modifier: Modifier = Modifier) {
+fun SignupWithPasswordScreen(modifier: Modifier = Modifier, onSignupClick: () -> Unit = { }) {
 
     val focusManager = LocalFocusManager.current
 
@@ -49,7 +50,7 @@ fun SignupWithPasswordScreen(modifier: Modifier = Modifier) {
 
     Column(modifier = modifier
         .fillMaxSize()
-        .padding(16.dp),
+        .padding(top = 16.dp, bottom = 32.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween) {
 
@@ -58,28 +59,36 @@ fun SignupWithPasswordScreen(modifier: Modifier = Modifier) {
             style = MaterialTheme.typography.headlineLarge,
             fontWeight = FontWeight.Medium,
             textAlign = TextAlign.Start,
-            modifier = modifier.fillMaxWidth()
+            modifier = modifier.fillMaxWidth().padding(horizontal = 16.dp)
         )
 
         Text(
             text = "Please enter your email & password to create an account.",
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Start,
-            modifier = modifier.fillMaxWidth()
+            modifier = modifier.fillMaxWidth().padding(horizontal = 16.dp)
         )
 
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(modifier = modifier.padding(horizontal = 16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
 
-            EmailComponent(
-                email = email,
-                onEmailUpdate = { email = it },
-                focusManager = focusManager)
+            Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                Text(text = "Email")
 
-            PasswordComponent(
-                password = password,
-                onPasswordUpdate = { password = it },
-                focusManager = focusManager
-            )
+                EmailComponent(
+                    email = email,
+                    onEmailUpdate = { email = it },
+                    focusManager = focusManager)
+            }
+
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text(text = "Password")
+
+                PasswordComponent(
+                    password = password,
+                    onPasswordUpdate = { password = it },
+                    focusManager = focusManager
+                )
+            }
 
             Row(modifier = modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Start) {
                 Checkbox(checked = false, onCheckedChange = {})
@@ -90,19 +99,19 @@ fun SignupWithPasswordScreen(modifier: Modifier = Modifier) {
         Divider(modifier = modifier.fillMaxWidth())
 
         TextButton(onClick = { /*TODO*/ }) {
-            Text(text = "Forgot the password?", fontWeight = FontWeight.Bold)
+            Text(text = "Forgot the password?", fontWeight = FontWeight.Bold, style = MaterialTheme.typography.titleMedium)
         }
 
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text(text = "Already have an account?")
             TextButton(onClick = {    }) {
-                Text(text = "Sign up", fontWeight = FontWeight.Bold)
+                Text(text = "Sign In", fontWeight = FontWeight.Bold, style = MaterialTheme.typography.titleMedium)
             }
         }
 
         Row(modifier = modifier
             .fillMaxWidth()
-            .wrapContentWidth(align = Alignment.CenterHorizontally),
+            .wrapContentWidth(align = Alignment.CenterHorizontally).padding(horizontal = 16.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             Divider(modifier = modifier.weight(1f), color = Color.LightGray)
@@ -132,7 +141,7 @@ fun SignupWithPasswordScreen(modifier: Modifier = Modifier) {
 
             Divider(modifier = modifier.fillMaxWidth())
 
-            Button(onClick = {   },
+            Button(onClick = onSignupClick,
                 modifier = modifier
                     .shadow(
                         elevation = 4.dp,
@@ -140,11 +149,10 @@ fun SignupWithPasswordScreen(modifier: Modifier = Modifier) {
                         spotColor = MaterialTheme.colorScheme.outlineVariant,
                         shape = RoundedCornerShape(50)
                     )
-                    .fillMaxWidth(),
+                    .fillMaxWidth().requiredHeight(50.dp).padding(horizontal = 16.dp),
                 colors = ButtonDefaults.filledTonalButtonColors(containerColor = Color.Red)) {
 
                 Text(text = stringResource(id = R.string.sign_up), color = colorResource(id = R.color.white), modifier = modifier.padding(4.dp))
-
             }
         }
 
